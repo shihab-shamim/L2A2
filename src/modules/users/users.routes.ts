@@ -12,6 +12,7 @@ const router=Router()
 router.post("/auth/signup",userController.createUser)
 router.post("/auth/signin",userController.signInUser)
 router.get("/users",auth(),verifyAdmin(),userController.getAllUser)
+router.put("/users/:userId",auth(),userController.updateUser)
 
 // router.get("/",userController.getUser)
 // router.get("/:id",userController.getSingleUser)
