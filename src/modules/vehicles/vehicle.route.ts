@@ -6,6 +6,7 @@ import verifyAdmin from "../../middleware/verifyAdmin";
   const router=Router()
 
   router.post("/vehicles",auth(),verifyAdmin(),vehicleController.createVehicle)
+  router.get("/vehicles",vehicleController.getAllVehicles)
 
 
 

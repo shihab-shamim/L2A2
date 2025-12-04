@@ -8,6 +8,14 @@ const createVehicle =async(vehicle_name:string, type:string,registration_number:
                 return result
 }
 
+const getAllVehicles =async()=>{
+     const result =await pool.query(
+                     `SELECT * FROM vehicles*`
+               
+     )
+      return result
+}
+
 export const vehicleServices={
-   createVehicle,
+   createVehicle,getAllVehicles
 }
