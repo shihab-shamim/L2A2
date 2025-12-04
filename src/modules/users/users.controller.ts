@@ -1,4 +1,3 @@
-import { UpgradeData } from './../../../node_modules/undici-types/dispatcher.d';
 import { Request, Response } from "express";
 import bcrypt from "bcryptjs";
 import { pool } from "../../config/db";
@@ -100,6 +99,37 @@ const updateUser=async(req: Request, res: Response)=>{
     }
 }
 
+const deleteUser =async(req: Request, res: Response)=>{
+     const id=req.params.userId
+          const result = await userServices.deleteUser(id!);
+
+          if(result.rowCount as number>0){
+            res.status(200).send({
+                 success: true,
+                 message: "User delete successfully",
+            })
+
+          }
+    //       res.status(200).send({
+    //   success: true,
+    //   message: "User updated successfully",
+      
+    //   data: {
+        
+    //     data:result.count[0]},
+    // });
+    try {
+        
+    } catch (error:any) {
+        res.status(501).send({
+            success:false,
+            message:error.message
+        })
+        
+    }
+
+}
+
 export const userController={
-    createUser,getAllUser,signInUser,updateUser
+    createUser,getAllUser,signInUser,updateUser,deleteUser
 }
