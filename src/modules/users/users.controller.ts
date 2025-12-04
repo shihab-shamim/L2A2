@@ -100,7 +100,10 @@ const updateUser=async(req: Request, res: Response)=>{
 }
 
 const deleteUser =async(req: Request, res: Response)=>{
-     const id=req.params.userId
+    
+
+    try {
+         const id=req.params.userId
           const result = await userServices.deleteUser(id!);
 
           if(result.rowCount as number>0){
@@ -110,15 +113,6 @@ const deleteUser =async(req: Request, res: Response)=>{
             })
 
           }
-    //       res.status(200).send({
-    //   success: true,
-    //   message: "User updated successfully",
-      
-    //   data: {
-        
-    //     data:result.count[0]},
-    // });
-    try {
         
     } catch (error:any) {
         res.status(501).send({

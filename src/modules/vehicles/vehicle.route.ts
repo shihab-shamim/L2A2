@@ -7,6 +7,9 @@ import verifyAdmin from "../../middleware/verifyAdmin";
 
   router.post("/vehicles",auth(),verifyAdmin(),vehicleController.createVehicle)
   router.get("/vehicles",vehicleController.getAllVehicles)
+  router.get("/vehicles/:vehicleId",vehicleController.singleVehicle)
+  router.put("/vehicles/:vehicleId",auth(),verifyAdmin(),vehicleController.updateVehicle)
+  router.delete("/vehicles/:vehicleId",auth(),verifyAdmin(),vehicleController.deleteVehicle)
 
 
 
