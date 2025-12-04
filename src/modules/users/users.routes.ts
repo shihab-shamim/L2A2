@@ -7,7 +7,9 @@ import { userController } from "./users.controller";
 const router=Router()
 
 
-router.post("/signup",userController.createUser)
+router.post("/auth/signup",userController.createUser)
+router.post("/auth/signin",userController.signInUser)
+router.get("/users",userController.getAllUser)
 
 // router.get("/",userController.getUser)
 // router.get("/:id",userController.getSingleUser)

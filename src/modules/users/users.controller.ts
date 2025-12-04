@@ -34,6 +34,48 @@ const createUser=async(req: Request, res: Response)=>{
 
 }
 
+const getAllUser =async (req: Request, res: Response)=>{
+    try {
+         const result = await userServices.getAllUser();
+        res.status(200).send({
+      success: true,
+      message: "Users retrieved successfully",
+      data: result.rows,
+    });
+        
+    } catch (error:any) {
+        res.status(501).send({
+            success:false,
+            message:error.message
+        })
+        
+    }
+
+}
+
+const signInUser= async (req: Request, res: Response)=>{
+    try {
+        const {email,password} =req.body
+          const result = await userServices.signInUser(email,password);
+          delete result.data.rows[0].password
+          res.status(200).send({
+      success: true,
+      message: "Login successful",
+      
+      data: {
+        token:result.token,
+        user:result.data.rows[0]},
+    });
+        
+    } catch (error:any) {
+        res.status(501).send({
+            success:false,
+            message:error.message
+        })
+        
+    }
+}
+
 export const userController={
-    createUser,
+    createUser,getAllUser,signInUser
 }
