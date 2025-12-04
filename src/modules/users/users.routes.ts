@@ -16,10 +16,6 @@ router.get("/users",auth(),verifyAdmin(),userController.getAllUser)
 router.put("/users/:userId",auth(),verifyAccess(),userController.updateUser)
 router.delete("/users/:userId",auth(),verifyAccess(),userController.deleteUser)
 
-// router.get("/",userController.getUser)
-// router.get("/:id",userController.getSingleUser)
-// router.put("/:id",userController.updatedUser)
-// router.put("/:id",userController.updatedUser)
-// router.delete("/:id",userController.deleteUser)
+
 
 export const userRoute=router;

@@ -5,6 +5,7 @@ import { Pool } from "pg";
 import config from "./config";
 import initDB, { pool } from "./config/db";
 import { userRoute } from "./modules/users/users.routes";
+import { vehicleRoute } from "./modules/vehicles/vehicle.route";
 
 const app = express();
 const port = config.PORT;
@@ -17,6 +18,7 @@ initDB()
 app.use(express.json())
 
 app.use("/api/v1",userRoute)
+app.use("/api/v1",vehicleRoute)
 
 // app.get("/", (req: Request, res: Response) => {
 //   res.send("Hello World!");
