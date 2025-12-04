@@ -2,6 +2,7 @@ import { pool } from "../../config/db"
 
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import config from "../../config";
 
 const  createUser = async(name:string,email:string,hashingPassword:string,phone:string,role:string)=>{
     const result =await pool.query(
@@ -25,10 +26,10 @@ const signInUser =async(email:string,password:string)=>{
             )
               const matched =await bcrypt.compare(password,result.rows[0].password)
            
-        
+        delete result.rows[0].password
             
             if(matched) {
-                const  token= await jwt.sign(result.rows[0],"ad8f6e20d5f24919b3c9a177ce4acb1a34d8e930bb3110c39588a9efb21e6e72",{expiresIn:"7d"})
+                const  token= await jwt.sign(result.rows[0],config.jwtSecret as string,{expiresIn:"7d"})
                 return {token,data:result}
             }
             else throw Error("password not match")

@@ -2,6 +2,8 @@
 
 import { Router } from "express";
 import { userController } from "./users.controller";
+import auth from "../../middleware/auth";
+import verifyAdmin from "../../middleware/verifyAdmin";
 
 
 const router=Router()
@@ -9,7 +11,7 @@ const router=Router()
 
 router.post("/auth/signup",userController.createUser)
 router.post("/auth/signin",userController.signInUser)
-router.get("/users",userController.getAllUser)
+router.get("/users",auth(),verifyAdmin(),userController.getAllUser)
 
 // router.get("/",userController.getUser)
 // router.get("/:id",userController.getSingleUser)
