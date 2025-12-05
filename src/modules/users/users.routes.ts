@@ -14,7 +14,7 @@ router.post("/auth/signup",userController.createUser)
 router.post("/auth/signin",userController.signInUser)
 router.get("/users",auth(),verifyAdmin(),userController.getAllUser)
 router.put("/users/:userId",auth(),verifyAccess(),userController.updateUser)
-router.delete("/users/:userId",auth(),verifyAccess(),userController.deleteUser)
+router.delete("/users/:userId",auth(),verifyAdmin(),userController.deleteUser)
 
 
 
