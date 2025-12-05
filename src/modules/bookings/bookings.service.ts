@@ -58,7 +58,16 @@ await pool.query(
 }
 
 
+const getBooking=async()=>{
+    const result =await pool.query(`
+        SELECT * FROM bookings
+        `)
+
+        return result
+
+}
+
 
 export const bookingServices={
-    createBooking
+    createBooking,getBooking
 }

@@ -65,7 +65,46 @@ const createBooking=async(req: Request, res: Response)=>{
 
 }
 
+const getBooking=async(req: Request, res: Response)=>{
+
+
+  
+    try {
+
+    
+        const result = await bookingServices.getBooking()
+
+        if(req.user!.role ==="admin"){
+              res.status(200).send({
+      success: true,
+      message: "Bookings retrieved successfully",
+      data: result.rows
+    });
+        
+
+        }
+        res.status(200).send({
+      success: true,
+      message: "Bookings retrieved successfully",
+      data: result.rows.filter((data,index)=>data.customer_id ===req.user!.id)
+    });
+        
+
+      
+    } catch (error:any) {
+        res.status(501).send({
+            success:false,
+            message:error.message
+        })
+        
+    }
+  
+
+  
+
+}
+
 
 export const bookingController={
-    createBooking
+    createBooking,getBooking
 }
