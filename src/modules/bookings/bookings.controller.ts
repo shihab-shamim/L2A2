@@ -109,7 +109,7 @@ const updateBooking = async (req: Request, res: Response) => {
     const bookingId = Number(req.params.bookingId);
     const { status } = req.body;
 
-    const user = req.user!; // from JWT middleware
+    const user = req.user!; 
     const userId = user.id;
     const userRole = user.role;
 
@@ -150,7 +150,6 @@ const updateBooking = async (req: Request, res: Response) => {
     });
   }
 };
-
 
 export const bookingController={
     createBooking,getBooking,updateBooking

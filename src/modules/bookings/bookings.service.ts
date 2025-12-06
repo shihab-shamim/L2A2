@@ -73,7 +73,7 @@ const updateBooking = async (
   userId: number,
   userRole: string
 ) => {
-  // 1️⃣ Check booking exists
+ 
   const bookingResult = await pool.query(
     `SELECT * FROM bookings WHERE id = $1`,
     [bookingId]
@@ -85,7 +85,7 @@ const updateBooking = async (
 
   const booking = bookingResult.rows[0];
 
-  // 2️⃣ CUSTOMER CAN ONLY CANCEL OWN ACTIVE BOOKING
+  
   if (userRole === "customer") {
     if (booking.customer_id !== userId) {
       return { error: true, message: "You cannot modify this booking!" };
@@ -99,7 +99,7 @@ const updateBooking = async (
       return { error: true, message: "Only active bookings can be cancelled!" };
     }
 
-    // Update booking
+
     const updateResult = await pool.query(
       `UPDATE bookings 
        SET status = 'cancelled'
@@ -115,7 +115,7 @@ const updateBooking = async (
     };
   }
 
-  // 3️⃣ ADMIN CAN MARK AS RETURNED ONLY IF ACTIVE
+
   if (userRole === "admin") {
     if (status !== "returned") {
       return { error: true, message: "Admins can only mark as returned!" };
@@ -133,7 +133,7 @@ const updateBooking = async (
       [bookingId]
     );
 
-    // Vehicle availability update
+    
     await pool.query(
       `UPDATE vehicles 
        SET availability_status = 'available'
