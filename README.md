@@ -47,7 +47,7 @@ A complete role-based Vehicle Rental Management API built with Node.js, Express.
 | Framework | Express.js |
 | Database | PostgreSQL + pg |
 | Authentication | JWT |
-| Deployment | Vercel / Railway / Render |
+| Deployment | Vercel |
 | Dev Tools | Nodemon, ESLint, TS-Node |
 
 ---
