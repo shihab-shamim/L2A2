@@ -104,7 +104,54 @@ const getBooking=async(req: Request, res: Response)=>{
 
 }
 
+const updateBooking = async (req: Request, res: Response) => {
+  try {
+    const bookingId = Number(req.params.bookingId);
+    const { status } = req.body;
+
+    const user = req.user!; // from JWT middleware
+    const userId = user.id;
+    const userRole = user.role;
+
+    if (!status) {
+      return res.status(400).send({
+        success: false,
+        message: "Status is required!"
+      });
+    }
+
+    const result = await bookingServices.updateBooking(
+      bookingId,
+      status,
+      userId,
+      userRole
+    );
+
+    if ((result as any).error) {
+      return res.status(403).json({
+        success: false,
+        message: (result as any).message
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: result.message,
+      data: result.data || null,
+      vehicle: {
+        availability_status:result.data.status
+      }
+    });
+
+  } catch (error: any) {
+    return res.status(500).json({
+      success: false,
+      message: error.message || "Request failed!"
+    });
+  }
+};
+
 
 export const bookingController={
-    createBooking,getBooking
+    createBooking,getBooking,updateBooking
 }
