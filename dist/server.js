@@ -16,6 +16,9 @@ app.use(express_1.default.json());
 app.use("/api/v1", users_routes_1.userRoute);
 app.use("/api/v1", vehicle_route_1.vehicleRoute);
 app.use("/api/v1", bookings_routes_1.bookingRoute);
+app.get("/", (req, res) => {
+    res.send("Server is running");
+});
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 });

@@ -2,28 +2,7 @@ import { Request, Response } from 'express';
 import { bookingServices } from './bookings.service';
 
 
-// const createBooking=async(req:Request,res:Response)=>{
 
-//      try {
-//    const {customer_id, vehicle_id, rent_start_date, rent_end_date}=req.body
-       
-//            const result = await bookingServices.createBooking(Number(customer_id), Number(vehicle_id), rent_start_date, rent_end_date)
-//            delete result.rows[0].password
-//            res.status(200).send({
-//          success: true,
-//          message: "User registered successfully",
-//          data: result.rows[0],
-//        });
-           
-//        } catch (error:any) {
-//         res.status(501).send({
-//             success:false,
-//             message:error.message
-//         })
-        
-//     }
-
-// }
 
 const createBooking=async(req: Request, res: Response)=>{
    const {customer_id, vehicle_id, rent_start_date, rent_end_date}=req.body; 
