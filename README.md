@@ -5,14 +5,14 @@ A complete role-based Vehicle Rental Management API built with Node.js, Express.
 ---
 
 ## 🚀 Live API Deployment
-🔗 Base URL: https://your-live-deployment-link.com  
-(Replace with actual deployed server host)
+🔗 Base URL: https://l2-a2-eight.vercel.app/  
+
 
 ---
 
 ## 📦 GitHub Repository
-🔗 Repo Link: https://github.com/your-username/vehicle-rental-system  
-(Replace with your actual GitHub link)
+🔗 Repo Link: https://github.com/shihab-shamim/L2A2 
+
 
 ---
 
