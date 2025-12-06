@@ -21,7 +21,9 @@ app.use(express.json())
 app.use("/api/v1",userRoute)
 app.use("/api/v1",vehicleRoute)
 app.use("/api/v1",bookingRoute)
-
+app.get("/",(req,res)=>{
+  res.send("Server is running")
+})
 
 
 app.listen(port, () => {
