@@ -51,5 +51,3 @@ A complete role-based Vehicle Rental Management API built with Node.js, Express.
 | Dev Tools | Nodemon, ESLint, TS-Node |
 
 ---
-
-## 📂 Folder Structure
